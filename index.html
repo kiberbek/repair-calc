@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Калькулятор ремонта Android — iShop</title>
+  <meta name="description" content="Расчёт стоимости ремонта Android-устройств">
+  <meta name="theme-color" content="#ff4e00">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iShop Ремонт">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFg0lEQVR4nO3dsXocRRBF4V4+IinAD+Vcz0rOQ9nBxiZoWMYWlnf3dlfdqjl/QoLxTPVRzciyxOXl5Y8BPOu37AtAbQQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUHye/YFeLlev9zzr72+ftp7HXVc+Ev1d0bzMyeP6bwBid28d86SzhjQ8nSOzpbRuQLams7ReTI6S0Bh6RydIaP+AaWkc9Q7o+Z/DpRej8k17NNzA10/fx1jjD+/ZV/IwdtljPH6V7dpdwvIMZ2jdhn1CeifdIZxPdPbZf6zR0YdAvovnWFfz/RvQ6N+RrUD+i6dUaSe6dDQqJxR1YB+TGeUqmf6vqFRM6N6X43/n3S6mLdWK6NKG+ijdMqtn+ndErqpklGZP0hsWM/46MqrLNoaAfWsZyrekPs7UIkh7uP/VmS9gX5dT/X1M/3qLpw/inwDcp5aPNtpOH4Wdu+weqyfm59/Rnbk9jiz20C2H2om3ObjFdAD02m2fsYDd2TVkFFAVnMx5zMrl4Aem0i/9TM9cl8mDVkEZDKLchzmlh+QwxTqSp9eckDP3H/X59f0+N3lNpQZUPpHTxuJk8x/hKG0tIBYP2tlzTMnoOfvtvcL0PTsPaY0lBAQu2ef+NnyDgRJdECsn92CJxwaEPXEiJxzXEDUEyls2rwDQRIUEOsnXszM2UCQRATE+skSMHk2ECTbA2L95No9fzYQJHsDWp//fd88Vdvqe9y6hNhAkGwMiLcfH/vOgg0Eya6ANq6f3q9B2+5u04mwgSDZEhBvP552nEvNDdT1KVbwvmoGBBvrAwp6fhX8YP2FkDtafjpsIEgqB9RpCZW9F/cf85vjg+M8w3c2PmLxD9lM+AR+4Yk+tAayft8VFv6kTjbQGOOpI5y/5PQLqfI70KR/+Cr/hdzf3UD9gIZwBm+XNQUoF1DcyoAyv4Lx9DOozQU8YuFJtdhAT9hxePXXyRMaBXT/+e07aYdriNUooFHnVKpc5x16BTTuOJvdh5d+AbHaBTQ+PKGYw0u/gEDLAvL6S2RLPj9fy+ySVp1Xxw1088OBRZ5f4m8dq3VAw+PkHK5hmxN8LSzxi1at05m6b6Cb+LM8QT3jRAFhDwKChIAgOcFL9D2efsU+x4vOB9hAkBAQJAQECQFBQkCQEBAkBAQJAUGyLKCF3y2LAKvOiw0ECQFBQkCQEBAkBATJyoD4RKyKhSfFBoKEgCAhIEgWB8RrkL+1Z8QGgoSAICEgSNYHxGuQs+WnwwaChIAg2RIQTzFPO86FDQTJroBYQm42nQgbCJKNAbGEfOw7CzYQJHsDYgk52HoKbCBItgfEEsq1e/5sIEgiAmIJZQmYPBsIkqCAWELxYmbOBoIkLiCWUKSwaYduIBqKETnn6EcYDe0WPGHegSBJCIgltE/8bHM2EA3tkDLVtEcYDa2VNU/egSDJDIgltEriJJM3EA3pcmeY/wijIUX69PIDGgZTKMphbhYBDY9Z1GIyMZeAhs1ESvCZlVFAw2kuzqym5BXQMJuOIbf5OP5/4+eMrp+/Zl+IF7d0JrsNdOM5ryy20/ANaBhPLZjzHBwfYUcnf5w5pzNZb6Ab/znuUOKuawQ0ikxzoSr36/4IOzrJ46xKOlOlgKbGGdVKZ6oX0NQso4rpTFUDmhpkVDedqXZAU9GMqqczdQhoKpRRj3SmPgFN5hl1SmfqFtB0OyeTkvp1c9MzoJvjyQXH1Diao+YBHQXEdJJoji4vL6e75/eu1y/P/cLX108rr6OgMl8LgycCgoSAICEgSHiJhoQNBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFB8jf0IGNWWH3VIAAAAABJRU5ErkJggg==">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAFg0lEQVR4nO3dsXocRRBF4V4+IinAD+Vcz0rOQ9nBxiZoWMYWlnf3dlfdqjl/QoLxTPVRzciyxOXl5Y8BPOu37AtAbQQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUHye/YFeLlev9zzr72+ftp7HXVc+Ev1d0bzMyeP6bwBid28d86SzhjQ8nSOzpbRuQLams7ReTI6S0Bh6RydIaP+AaWkc9Q7o+Z/DpRej8k17NNzA10/fx1jjD+/ZV/IwdtljPH6V7dpdwvIMZ2jdhn1CeifdIZxPdPbZf6zR0YdAvovnWFfz/RvQ6N+RrUD+i6dUaSe6dDQqJxR1YB+TGeUqmf6vqFRM6N6X43/n3S6mLdWK6NKG+ijdMqtn+ndErqpklGZP0hsWM/46MqrLNoaAfWsZyrekPs7UIkh7uP/VmS9gX5dT/X1M/3qLpw/inwDcp5aPNtpOH4Wdu+weqyfm59/Rnbk9jiz20C2H2om3ObjFdAD02m2fsYDd2TVkFFAVnMx5zMrl4Aem0i/9TM9cl8mDVkEZDKLchzmlh+QwxTqSp9eckDP3H/X59f0+N3lNpQZUPpHTxuJk8x/hKG0tIBYP2tlzTMnoOfvtvcL0PTsPaY0lBAQu2ef+NnyDgRJdECsn92CJxwaEPXEiJxzXEDUEyls2rwDQRIUEOsnXszM2UCQRATE+skSMHk2ECTbA2L95No9fzYQJHsDWp//fd88Vdvqe9y6hNhAkGwMiLcfH/vOgg0Eya6ANq6f3q9B2+5u04mwgSDZEhBvP552nEvNDdT1KVbwvmoGBBvrAwp6fhX8YP2FkDtafjpsIEgqB9RpCZW9F/cf85vjg+M8w3c2PmLxD9lM+AR+4Yk+tAayft8VFv6kTjbQGOOpI5y/5PQLqfI70KR/+Cr/hdzf3UD9gIZwBm+XNQUoF1DcyoAyv4Lx9DOozQU8YuFJtdhAT9hxePXXyRMaBXT/+e07aYdriNUooFHnVKpc5x16BTTuOJvdh5d+AbHaBTQ+PKGYw0u/gEDLAvL6S2RLPj9fy+ySVp1Xxw1088OBRZ5f4m8dq3VAw+PkHK5hmxN8LSzxi1at05m6b6Cb+LM8QT3jRAFhDwKChIAgOcFL9D2efsU+x4vOB9hAkBAQJAQECQFBQkCQEBAkBAQJAUGyLKCF3y2LAKvOiw0ECQFBQkCQEBAkBATJyoD4RKyKhSfFBoKEgCAhIEgWB8RrkL+1Z8QGgoSAICEgSNYHxGuQs+WnwwaChIAg2RIQTzFPO86FDQTJroBYQm42nQgbCJKNAbGEfOw7CzYQJHsDYgk52HoKbCBItgfEEsq1e/5sIEgiAmIJZQmYPBsIkqCAWELxYmbOBoIkLiCWUKSwaYduIBqKETnn6EcYDe0WPGHegSBJCIgltE/8bHM2EA3tkDLVtEcYDa2VNU/egSDJDIgltEriJJM3EA3pcmeY/wijIUX69PIDGgZTKMphbhYBDY9Z1GIyMZeAhs1ESvCZlVFAw2kuzqym5BXQMJuOIbf5OP5/4+eMrp+/Zl+IF7d0JrsNdOM5ryy20/ANaBhPLZjzHBwfYUcnf5w5pzNZb6Ab/znuUOKuawQ0ikxzoSr36/4IOzrJ46xKOlOlgKbGGdVKZ6oX0NQso4rpTFUDmhpkVDedqXZAU9GMqqczdQhoKpRRj3SmPgFN5hl1SmfqFtB0OyeTkvp1c9MzoJvjyQXH1Diao+YBHQXEdJJoji4vL6e75/eu1y/P/cLX108rr6OgMl8LgycCgoSAICEgSHiJhoQNBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFB8jf0IGNWWH3VIAAAAABJRU5ErkJggg==">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #0d0d14;
+      --border: #2a2a38;
+      --border2: #1e1e2a;
+      --text: #e8e4d8;
+      --muted: #777;
+      --dim: #555;
+      --very-dim: #333;
+      --accent: #ff4e00;
+      --accent2: #ff8c00;
+      --accent-light: #ff6a20;
+      --green: #00c864;
+      --red: #ff4444;
+      --font: "IBM Plex Mono", "Courier New", monospace;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.5;
+      overscroll-behavior: none;
+    }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    .header-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, #ff4e00, #ff8c00, #ffd700, #ff4e00);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      position: sticky; top: 0; z-index: 100;
+    }
+    @keyframes shimmer { 0%{background-position:0% 0%} 100%{background-position:200% 0%} }
+
+    .wrap { max-width: 680px; margin: 0 auto; padding: 24px 16px 80px; }
+
+    /* HEADER */
+    .app-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .app-logo {
+      width: 36px; height: 36px; background: var(--accent); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      flex-shrink: 0;
+    }
+    .app-title-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    .app-title { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+    .app-meta { font-size: 11px; color: var(--very-dim); letter-spacing: 0.5px; margin-bottom: 28px; }
+    .dot { color: var(--border); margin: 0 6px; }
+
+    /* SECTION */
+    .section { margin-bottom: 22px; }
+    .section-label {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 10px; font-weight: 600;
+    }
+
+    /* REPAIR GRID */
+    .repair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    @media (max-width: 400px) { .repair-grid { grid-template-columns: 1fr; } }
+
+    .repair-btn {
+      background: transparent; border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); cursor: pointer; font-family: var(--font); font-size: 12px;
+      padding: 11px 13px; text-align: left; transition: all 0.15s; width: 100%;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .repair-btn:active { transform: scale(0.98); }
+    .repair-btn:hover { border-color: var(--accent); background: rgba(255,78,0,0.05); }
+    .repair-btn.active { border-color: var(--accent); background: rgba(255,78,0,0.12); color: var(--accent2); }
+    .repair-btn .check { margin-left: auto; color: var(--accent); font-size: 14px; }
+
+    /* INPUT */
+    .input-field {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); font-family: var(--font); font-size: 14px;
+      padding: 13px 16px; width: 100%; outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .input-field:focus { border-color: var(--accent); }
+    .input-field::placeholder { color: #444; }
+    .input-hint { font-size: 11px; color: #444; margin-top: 6px; }
+
+    /* SELECT */
+    .select-wrap { position: relative; }
+    .select-field {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); font-family: var(--font); font-size: 13px;
+      padding: 13px 40px 13px 16px; width: 100%; cursor: pointer; outline: none;
+      transition: border-color 0.2s; -webkit-appearance: none; appearance: none;
+    }
+    .select-field:focus { border-color: var(--accent); }
+    .select-arrow {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      pointer-events: none; color: var(--accent); font-size: 10px;
+    }
+
+    /* GRID 2 */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 440px) { .grid2 { grid-template-columns: 1fr; gap: 12px; } }
+
+    /* CALC BUTTON */
+    .calc-btn {
+      background: var(--accent); border: none; border-radius: 4px; color: #fff;
+      cursor: pointer; font-family: var(--font); font-size: 13px; font-weight: 700;
+      letter-spacing: 2px; padding: 17px 32px; text-transform: uppercase;
+      transition: all 0.2s; width: 100%; -webkit-appearance: none;
+    }
+    .calc-btn:active:not(:disabled) { transform: scale(0.99); }
+    .calc-btn:hover:not(:disabled) { background: var(--accent-light); box-shadow: 0 4px 20px rgba(255,78,0,0.35); }
+    .calc-btn:disabled { background: var(--border); color: #555; cursor: not-allowed; }
+
+    /* RESULT */
+    .result-panel {
+      margin-top: 28px; opacity: 0; transform: translateY(12px);
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .result-panel.show { opacity: 1; transform: translateY(0); }
+
+    .result-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 22px;
+    }
+
+    .result-model { font-size: 12px; color: #888; margin-bottom: 16px; letter-spacing: 0.5px; }
+    .result-label { font-size: 10px; color: var(--dim); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .result-price {
+      font-size: clamp(38px, 10vw, 64px); font-weight: 700; color: var(--accent2);
+      letter-spacing: -2px; line-height: 1; margin-bottom: 24px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* BREAKDOWN */
+    .brow {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--border2); font-size: 12px;
+    }
+    .brow:last-child { border-bottom: none; }
+    .brow-left { color: var(--muted); }
+    .brow-right { color: var(--text); font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .brow-dim { color: var(--very-dim); font-size: 11px; }
+
+    .work-block {
+      background: var(--bg3); border: 1px solid var(--border2); border-radius: 4px;
+      padding: 4px 14px; margin: 8px 0;
+    }
+    .work-block .brow { border-bottom-color: #16161e; }
+    .work-block .brow:last-child { border-bottom: none; }
+
+    .total-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0 0; border-top: 1px solid rgba(255,78,0,0.2); margin-top: 4px;
+    }
+    .total-label { color: #aaa; font-weight: 600; font-size: 13px; }
+    .total-price { color: var(--accent2); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
+
+    /* TAG */
+    .tag {
+      display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 3px; font-weight: 600; white-space: nowrap;
+    }
+    .tag-orange { background: rgba(255,78,0,0.15); color: var(--accent-light); border: 1px solid rgba(255,78,0,0.3); }
+    .tag-green { background: rgba(0,200,100,0.1); color: var(--green); border: 1px solid rgba(0,200,100,0.3); }
+    .tag-red { background: rgba(255,50,50,0.1); color: var(--red); border: 1px solid rgba(255,50,50,0.3); }
+
+    /* FEASIBILITY */
+    .feasibility {
+      border-radius: 4px; padding: 13px 16px; font-size: 12px; margin-top: 16px;
+    }
+    .feasibility.ok { background: rgba(0,200,100,0.06); border: 1px solid rgba(0,200,100,0.2); }
+    .feasibility.warn { background: rgba(255,50,50,0.06); border: 1px solid rgba(255,50,50,0.2); }
+    .feasibility-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .feasibility-text { color: #666; line-height: 1.6; }
+
+    /* FOOTER FORMULA */
+    .footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border2); }
+    .footer-text { font-size: 10px; color: var(--very-dim); letter-spacing: 0.5px; line-height: 2; }
+
+    /* INSTALL BANNER */
+    .install-banner {
+      background: rgba(255,78,0,0.08); border: 1px solid rgba(255,78,0,0.2);
+      border-radius: 4px; padding: 12px 16px; margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px; font-size: 12px;
+    }
+    .install-banner.hidden { display: none; }
+    .install-icon { font-size: 20px; flex-shrink: 0; }
+    .install-text { flex: 1; color: var(--muted); }
+    .install-text strong { color: var(--accent2); }
+    .install-btn-close {
+      background: none; border: none; color: var(--dim); cursor: pointer;
+      font-size: 18px; line-height: 1; padding: 0 4px; flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header-stripe"></div>
+
+<div class="wrap">
+
+  <!-- Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <div class="install-icon">📲</div>
+    <div class="install-text">
+      <strong>Установить как приложение</strong><br>
+      iPhone/iPad: кнопка Поделиться → «На экран Домой»<br>
+      Android: меню браузера → «Добавить на главный экран»
+    </div>
+    <button class="install-btn-close" onclick="document.getElementById('installBanner').classList.add('hidden')">×</button>
+  </div>
+
+  <!-- Header -->
+  <div class="app-header">
+    <div class="app-logo">🔧</div>
+    <div>
+      <div class="app-title-sub">iShop Service Center</div>
+      <div class="app-title">Калькулятор ремонта Android</div>
+    </div>
+  </div>
+  <div class="app-meta">
+    Запчасти: krasnoyarsk.moba.ru
+    <span class="dot">·</span>
+    Наценка ×1.7
+    <span class="dot">·</span>
+    Работа = мастер + маржа + гарантия
+  </div>
+
+  <!-- Model -->
+  <div class="section">
+    <div class="section-label">Модель устройства (необязательно)</div>
+    <input class="input-field" id="modelName" type="text"
+      placeholder="Samsung Galaxy A32, Xiaomi Redmi Note 10...">
+  </div>
+
+  <!-- Repair type -->
+  <div class="section">
+    <div class="section-label">Вид ремонта</div>
+    <div class="repair-grid" id="repairGrid">
+      <button class="repair-btn" data-id="display" data-salary="500" onclick="selectRepair(this)">
+        <span>📱</span><span>Замена дисплея</span>
+      </button>
+      <button class="repair-btn" data-id="battery" data-salary="500" onclick="selectRepair(this)">
+        <span>🔋</span><span>Замена аккумулятора</span>
+      </button>
+      <button class="repair-btn" data-id="connector" data-salary="500" onclick="selectRepair(this)">
+        <span>🔌</span><span>Замена разъёма</span>
+      </button>
+      <button class="repair-btn" data-id="cleaning" data-salary="500" onclick="selectRepair(this)">
+        <span>💧</span><span>Чистка / просушка</span>
+      </button>
+      <button class="repair-btn" data-id="board" data-salary="800" onclick="selectRepair(this)">
+        <span>🔧</span><span>Ремонт платы (микропайка)</span>
+      </button>
+      <button class="repair-btn" data-id="camera" data-salary="500" onclick="selectRepair(this)">
+        <span>📷</span><span>Замена камеры</span>
+      </button>
+      <button class="repair-btn" data-id="speaker" data-salary="500" onclick="selectRepair(this)">
+        <span>🔊</span><span>Замена динамика/микрофона</span>
+      </button>
+      <button class="repair-btn" data-id="button" data-salary="500" onclick="selectRepair(this)">
+        <span>⚙️</span><span>Ремонт кнопок</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Part cost -->
+  <div class="section">
+    <div class="section-label">Стоимость запчасти на moba.ru (₽)</div>
+    <input class="input-field" id="partCost" type="number" min="0"
+      placeholder="Введите цену запчасти, например 800" inputmode="numeric">
+    <div class="input-hint">Найди запчасть на krasnoyarsk.moba.ru → введи цену → наценка ×1.7 посчитается автоматически</div>
+  </div>
+
+  <!-- Year + Complexity -->
+  <div class="grid2">
+    <div class="section">
+      <div class="section-label">Год выпуска</div>
+      <div class="select-wrap">
+        <select class="select-field" id="releaseYear" onchange="updateYearHint()">
+        </select>
+        <span class="select-arrow">▼</span>
+      </div>
+      <div class="input-hint" id="yearHint"></div>
+    </div>
+    <div class="section">
+      <div class="section-label">Сложность разборки</div>
+      <div class="select-wrap">
+        <select class="select-field" id="complexity">
+          <option value="" disabled selected>Выберите...</option>
+          <option value="1.0" data-desc="Samsung A-серия, кнопочные, Redmi бюджет">Простой (×1.0)</option>
+          <option value="1.5" data-desc="Xiaomi, Realme, Honor, Samsung M-серия">Средний (×1.5)</option>
+          <option value="1.8" data-desc="Samsung S-серия, Pixel, OnePlus, Sony">Сложный (×1.8)</option>
+          <option value="2.0" data-desc="Раскладушки, Z Fold, OLED-склейка, редкие">Очень сложный (×2.0)</option>
+        </select>
+        <span class="select-arrow">▼</span>
+      </div>
+      <div class="input-hint" id="complexityHint"></div>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <button class="calc-btn" id="calcBtn" onclick="calculate()">→ Рассчитать цену</button>
+
+  <!-- Result -->
+  <div class="result-panel" id="resultPanel">
+    <div class="result-card">
+      <div class="result-model" id="resultModel"></div>
+      <div class="result-label">Итоговая цена клиенту</div>
+      <div class="result-price" id="resultPrice"></div>
+
+      <div id="resultBreakdown"></div>
+
+      <div class="feasibility" id="feasibility">
+        <div class="feasibility-top">
+          <span id="feasibilityIcon"></span>
+          <span class="tag" id="feasibilityTag"></span>
+        </div>
+        <div class="feasibility-text" id="feasibilityText"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-text">
+      РАБОТА = Мастер(база × К_сложн × К_возраст) + Маржа(×0.5) + Гарантия(×0.6)<br>
+      ИТОГО = Запчасть_moba × 1.7 + РАБОТА
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // --- DATA ---
+  const MARKUP = 1.7;
+  const MARGIN_RATE = 0.50;
+  const WARRANTY_RATE = 0.60;
+
+  let selectedRepair = null;
+
+  function getAgeCoeff(year) {
+    const age = new Date().getFullYear() - year;
+    if (age <= 2) return { k: 1.0, label: "Новая (0–2 года)" };
+    if (age <= 4) return { k: 1.1, label: "Средняя (2–4 года)" };
+    if (age <= 6) return { k: 1.25, label: "Старая (4–6 лет)" };
+    return { k: 1.4, label: "Очень старая (6+ лет)" };
+  }
+
+  // Populate year select
+  (function() {
+    const sel = document.getElementById("releaseYear");
+    const cur = new Date().getFullYear();
+    for (let y = cur; y >= cur - 14; y--) {
+      const opt = document.createElement("option");
+      opt.value = y;
+      opt.textContent = y;
+      if (y === 2021) opt.selected = true;
+      sel.appendChild(opt);
+    }
+    updateYearHint();
+  })();
+
+  function updateYearHint() {
+    const year = parseInt(document.getElementById("releaseYear").value);
+    const info = getAgeCoeff(year);
+    const age = new Date().getFullYear() - year;
+    document.getElementById("yearHint").textContent = `Возраст: ${age} лет · К = ${info.k}`;
+  }
+
+  document.getElementById("complexity").addEventListener("change", function() {
+    const opt = this.options[this.selectedIndex];
+    document.getElementById("complexityHint").textContent = opt.dataset.desc || "";
+    checkReady();
+  });
+
+  document.getElementById("partCost").addEventListener("input", checkReady);
+
+  function selectRepair(btn) {
+    document.querySelectorAll(".repair-btn").forEach(b => {
+      b.classList.remove("active");
+      const c = b.querySelector(".check");
+      if (c) c.remove();
+    });
+    btn.classList.add("active");
+    if (!btn.querySelector(".check")) {
+      const chk = document.createElement("span");
+      chk.className = "check";
+      chk.textContent = "✓";
+      btn.appendChild(chk);
+    }
+    selectedRepair = {
+      label: btn.querySelectorAll("span")[1].textContent,
+      baseSalary: parseInt(btn.dataset.salary)
+    };
+    checkReady();
+  }
+
+  function checkReady() {
+    const part = document.getElementById("partCost").value;
+    const comp = document.getElementById("complexity").value;
+    const ready = selectedRepair && part && parseFloat(part) >= 0 && comp;
+    document.getElementById("calcBtn").disabled = !ready;
+  }
+
+  function fmt(n) { return n.toLocaleString("ru-RU"); }
+
+  function calculate() {
+    const part = parseFloat(document.getElementById("partCost").value);
+    const complexityK = parseFloat(document.getElementById("complexity").value);
+    const year = parseInt(document.getElementById("releaseYear").value);
+    const model = document.getElementById("modelName").value.trim();
+    const ageInfo = getAgeCoeff(year);
+
+    const masterSalary = Math.round(selectedRepair.baseSalary * complexityK * ageInfo.k);
+    const companyMargin = Math.round(masterSalary * MARGIN_RATE);
+    const warrantyReserve = Math.round(masterSalary * WARRANTY_RATE);
+    const workTotal = masterSalary + companyMargin + warrantyReserve;
+    const partTotal = Math.round(part * MARKUP);
+    const total = partTotal + workTotal;
+    const marketValue = Math.round(total / 0.4);
+    const worthIt = total <= marketValue;
+    const pct = Math.round((total / marketValue) * 100);
+
+    // Model header
+    const modelEl = document.getElementById("resultModel");
+    if (model) {
+      modelEl.innerHTML = `${model} <span style="color:#444;margin:0 6px">·</span> ${selectedRepair.label}`;
+      modelEl.style.display = "block";
+    } else {
+      modelEl.style.display = "none";
+    }
+
+    document.getElementById("resultPrice").textContent = fmt(total) + " ₽";
+
+    document.getElementById("resultBreakdown").innerHTML = `
+      <div class="brow">
+        <span class="brow-left">Запчасть (с moba.ru × 1.7)</span>
+        <span class="brow-right">${fmt(partTotal)} ₽</span>
+      </div>
+      <div class="work-block">
+        <div class="brow">
+          <span style="color:#555;font-size:10px;letter-spacing:1px;text-transform:uppercase">Работа (итого)</span>
+          <span class="brow-right">${fmt(workTotal)} ₽</span>
+        </div>
+        <div class="brow">
+          <span class="brow-left">└ Зарплата мастера <span class="brow-dim">(${selectedRepair.baseSalary}₽ × ${complexityK} × ${ageInfo.k})</span></span>
+          <span class="brow-right" style="color:#aaa">${fmt(masterSalary)} ₽</span>
+        </div>
+        <div class="brow">
+          <span class="brow-left">└ Маржа компании <span class="brow-dim">(50%)</span></span>
+          <span class="brow-right" style="color:#aaa">${fmt(companyMargin)} ₽</span>
+        </div>
+        <div class="brow" style="border-bottom:none">
+          <span class="brow-left">└ Гарантийный резерв <span class="brow-dim">(60%)</span></span>
+          <span class="brow-right" style="color:#aaa">${fmt(warrantyReserve)} ₽</span>
+        </div>
+      </div>
+      <div class="brow">
+        <span class="brow-left">Возраст устройства</span>
+        <span class="tag tag-orange">${ageInfo.label}</span>
+      </div>
+      <div class="total-row">
+        <span class="total-label">ИТОГО</span>
+        <span class="total-price">${fmt(total)} ₽</span>
+      </div>
+    `;
+
+    const f = document.getElementById("feasibility");
+    f.className = "feasibility " + (worthIt ? "ok" : "warn");
+    document.getElementById("feasibilityIcon").textContent = worthIt ? "✅" : "⚠️";
+    const tagEl = document.getElementById("feasibilityTag");
+    tagEl.textContent = worthIt ? "Ремонт целесообразен" : "Ремонт под вопросом";
+    tagEl.className = "tag " + (worthIt ? "tag-green" : "tag-red");
+    document.getElementById("feasibilityText").textContent = worthIt
+      ? `Цена ремонта = ${pct}% от стоимости устройства. Ремонт обоснован — клиент не переплачивает.`
+      : `Цена ремонта = ${pct}% от стоимости устройства (~${fmt(marketValue)} ₽ б/у). Стоит предупредить клиента — ремонт может быть невыгоден.`;
+
+    const panel = document.getElementById("resultPanel");
+    panel.classList.remove("show");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      panel.classList.add("show");
+      setTimeout(() => panel.scrollIntoView({ behavior: "smooth", block: "nearest" }), 100);
+    }));
+  }
+
+  // Service Worker
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
+</script>
+</body>
+</html>
