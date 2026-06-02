@@ -176,6 +176,14 @@
     .total-label { color: #aaa; font-weight: 600; font-size: 13px; }
     .total-price { color: var(--accent2); font-weight: 700; font-size: 20px; font-variant-numeric: tabular-nums; }
 
+    .profit-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px; padding: 12px 16px; border-radius: 4px;
+      background: rgba(0,200,100,0.08); border: 1px solid rgba(0,200,100,0.25);
+    }
+    .profit-label { color: var(--green); font-size: 12px; font-weight: 600; }
+    .profit-value { color: var(--green); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+
     /* TAG */
     .tag {
       display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
@@ -443,6 +451,9 @@
     const workTotal = masterSalary + companyMargin + warrantyReserve;
     const partTotal = Math.round(part * MARKUP);
     const total = partTotal + workTotal;
+    // Чистая прибыль = наценка на запчасть + маржа компании (без зарплаты мастера и гарантийного резерва)
+    const partMarkup = partTotal - part;
+    const netProfit = partMarkup + companyMargin;
     const marketValue = Math.round(total / 0.4);
     const worthIt = total <= marketValue;
     const pct = Math.round((total / marketValue) * 100);
@@ -484,6 +495,10 @@
       <div class="total-row">
         <span class="total-label">ИТОГО</span>
         <span class="total-price">${fmt(total)} ₽</span>
+      </div>
+      <div class="profit-row">
+        <span class="profit-label">💰 Чистая прибыль компании</span>
+        <span class="profit-value">${fmt(netProfit)} ₽</span>
       </div>
     `;
 
