@@ -433,14 +433,13 @@
     const model = document.getElementById("modelName").value.trim();
     const ageInfo = getAgeCoeff(year);
 
-    // Зарплата мастера — фиксированная
+    // Зарплата мастера — фиксированная (300 или 500)
     const masterSalary = selectedRepair.baseSalary;
-    // Базовая стоимость работы с учётом сложности и возраста
+    // Маржа компании = база × К_сложн × К_возраст × 50%
     const workBase = Math.round(selectedRepair.baseSalary * complexityK * ageInfo.k);
-    // Маржа компании = 50% от мастера + вся надбавка за сложность/возраст
-    const companyMargin = Math.round((workBase - masterSalary) + masterSalary * MARGIN_RATE);
-    // Гарантийный резерв = 60% от фиксированной зарплаты мастера
-    const warrantyReserve = Math.round(masterSalary * WARRANTY_RATE);
+    const companyMargin = Math.round(workBase * MARGIN_RATE);
+    // Гарантийный резерв = 60% от закупочной цены запчасти
+    const warrantyReserve = Math.round(part * WARRANTY_RATE);
     const workTotal = masterSalary + companyMargin + warrantyReserve;
     const partTotal = Math.round(part * MARKUP);
     const total = partTotal + workTotal;
